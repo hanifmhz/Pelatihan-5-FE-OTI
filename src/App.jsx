@@ -8,7 +8,7 @@ export default function App() {
 
   return (
     <form className="forms" onSubmit={handleSubmit(onSubmit)}>
-      <h1 className='tittle-form'>REGISTER</h1>
+      <h1 className='tittle-form'>REGISTER FORM</h1>
       <div className='div-form'>
         <label className='label'>Username</label>
         <input 
