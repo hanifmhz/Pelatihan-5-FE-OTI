@@ -1,35 +1,78 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const { register, watch, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
 
   return (
-    <>
+    <form className="forms" onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <input 
+          className="form-fields" 
+          type="text" 
+          placeholder="Username" 
+          {...register("username", { required: "Username is required" })} 
+        />
+        {errors.username && <p className="error-message">{errors.username.message}</p>}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
 
-export default App
+      <div>
+        <input 
+          className="form-fields" 
+          type="email" 
+          placeholder="Email" 
+          {...register("email", { 
+            required: "Email is required", 
+            pattern: { 
+              value: /^\S+@\S+$/i, 
+              message: "Invalid email address" 
+            } 
+          })} 
+        />
+        {errors.email && <p className="error-message">{errors.email.message}</p>}
+      </div>
+
+      <div>
+        <input 
+          className="form-fields" 
+          type="tel" 
+          placeholder="Phone Number" 
+          {...register("phoneNumb", { 
+            required: "Phone number is required",  
+            minLength: { value: 9, message: "Phone number must be at least 9 digits" }, 
+            maxLength: { value: 13, message: "Phone number must be at most 13 digits" },
+            pattern: { value: /^[0-9]+$/i, message: "Phone number must be a number" } 
+          })} 
+        />
+        {errors.phoneNumb && <p className="error-message">{errors.phoneNumb.message}</p>}
+      </div>
+
+      <div>
+        <input 
+          className="form-fields" 
+          type="password" 
+          placeholder="Password" 
+          {...register("password", { required: "Password is required" })} 
+        />
+        {errors.password && <p className="error-message">{errors.password.message}</p>}
+      </div>
+
+      <div>
+        <input 
+          className="form-fields" 
+          type="password" 
+          placeholder="Confirm Password" 
+          {...register("confPassword", { 
+            required: "Confirm password is required", 
+            validate: (value) => value === watch("password") || "Passwords do not match" 
+          })} 
+        />
+        {errors.confPassword && <p className="error-message">{errors.confPassword.message}</p>}
+      </div>
+
+      <input type="submit" />
+    </form>
+  );
+}
