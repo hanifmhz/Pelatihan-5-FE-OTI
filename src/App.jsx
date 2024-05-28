@@ -15,7 +15,7 @@ export default function App() {
           className="form-fields" 
           type="text" 
           placeholder="Username" 
-          {...register("username", { required: "Username is required" })} 
+          {...register("username", { required: "*Username is required" })} 
         />
         {errors.username && <p className="error-message">{errors.username.message}</p>}
       </div>
@@ -27,10 +27,10 @@ export default function App() {
           type="email" 
           placeholder="Email" 
           {...register("email", { 
-            required: "Email is required", 
+            required: "*Email is required", 
             pattern: { 
               value: /^\S+@\S+$/i, 
-              message: "Invalid email address" 
+              message: "*Invalid email address" 
             } 
           })} 
         />
@@ -44,10 +44,10 @@ export default function App() {
           type="tel" 
           placeholder="Phone Number" 
           {...register("phoneNumb", { 
-            required: "Phone number is required",  
-            minLength: { value: 9, message: "Phone number must be at least 9 digits" }, 
-            maxLength: { value: 13, message: "Phone number must be at most 13 digits" },
-            pattern: { value: /^[0-9]+$/i, message: "Phone number must be a number" } 
+            required: "*Phone number is required",  
+            minLength: { value: 9, message: "*Phone number must be at least 9 digits" }, 
+            maxLength: { value: 13, message: "*Phone number must be at most 13 digits" },
+            pattern: { value: /^[0-9]+$/i, message: "*Phone number must be a number" } 
           })} 
         />
         {errors.phoneNumb && <p className="error-message">{errors.phoneNumb.message}</p>}
@@ -59,7 +59,7 @@ export default function App() {
           className="form-fields" 
           type="password" 
           placeholder="Password" 
-          {...register("password", { required: "Password is required" })} 
+          {...register("password", { required: "*Password is required" })} 
         />
         {errors.password && <p className="error-message">{errors.password.message}</p>}
       </div>
@@ -71,8 +71,8 @@ export default function App() {
           type="password" 
           placeholder="Confirm Password" 
           {...register("confPassword", { 
-            required: "Confirm password is required", 
-            validate: (value) => value === watch("password") || "Passwords do not match" 
+            required: "*Confirm password is required", 
+            validate: (value) => value === watch("password") || "*Passwords do not match" 
           })} 
         />
         {errors.confPassword && <p className="error-message">{errors.confPassword.message}</p>}

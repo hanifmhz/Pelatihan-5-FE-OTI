@@ -11,14 +11,20 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
-  background-color: rgb(201, 202, 255);
+  background-color: rgb(249, 251, 255);
   width: 300px;
   min-height: 500px;
   height: auto;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .tittle-form{
-  font-size: 30px;
+  margin: 0;
+  font-size: 32px;
   color: rgb(33, 109, 248);
 }
 
@@ -28,12 +34,14 @@
 }
 
 .label{
+  margin-bottom: 3px;
   color: rgb(0, 0, 0);
 }
 
 .form-fields{
+  z-index: 1;
   display: block;
-  background-color: whitesmoke;
+  background-color: rgb(255, 255, 255);
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -41,10 +49,11 @@
   -o-border-radius: 5px;
   height: 20px;
   width: 250px;
-  border: 1px solid rgba(128, 128, 128, 0.829);
+  border: 1px solid rgb(136, 170, 255);
 }
 
 .error-message {
+  padding: 50px 0 0;
   position: absolute;
   color: rgb(255, 54, 54);
   font-size: 11px;
@@ -53,6 +62,7 @@
 }
 
 .btn-submit{
+  margin-top: 20px;
   background-color: rgb(33, 109, 248);
   color: whitesmoke;
   height: 30px;
