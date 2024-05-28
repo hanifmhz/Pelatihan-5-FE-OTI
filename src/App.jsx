@@ -8,7 +8,9 @@ export default function App() {
 
   return (
     <form className="forms" onSubmit={handleSubmit(onSubmit)}>
-      <div>
+      <h1 className='tittle-form'>REGISTER</h1>
+      <div className='div-form'>
+        <label className='label'>Username</label>
         <input 
           className="form-fields" 
           type="text" 
@@ -18,7 +20,8 @@ export default function App() {
         {errors.username && <p className="error-message">{errors.username.message}</p>}
       </div>
 
-      <div>
+      <div className='div-form'>
+      <label className='label'>Email</label>
         <input 
           className="form-fields" 
           type="email" 
@@ -34,7 +37,8 @@ export default function App() {
         {errors.email && <p className="error-message">{errors.email.message}</p>}
       </div>
 
-      <div>
+      <div className='div-form'>
+      <label className='label'>Phone Number</label>
         <input 
           className="form-fields" 
           type="tel" 
@@ -49,7 +53,8 @@ export default function App() {
         {errors.phoneNumb && <p className="error-message">{errors.phoneNumb.message}</p>}
       </div>
 
-      <div>
+      <div className='div-form'>
+      <label className='label'>Password</label>
         <input 
           className="form-fields" 
           type="password" 
@@ -59,7 +64,8 @@ export default function App() {
         {errors.password && <p className="error-message">{errors.password.message}</p>}
       </div>
 
-      <div>
+      <div className='div-form'>
+      <label className='label'>Confirm Password</label>
         <input 
           className="form-fields" 
           type="password" 
@@ -72,7 +78,7 @@ export default function App() {
         {errors.confPassword && <p className="error-message">{errors.confPassword.message}</p>}
       </div>
 
-      <input type="submit" />
+      <input className="btn-submit" type="submit" value="Register"/>
     </form>
   );
 }
